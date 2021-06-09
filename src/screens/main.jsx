@@ -24,7 +24,7 @@ const useStyles = {
     },
 };
 
-class Display extends React.Component {
+class main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +32,8 @@ class Display extends React.Component {
             contacts: [],
         };
         this.deletecontact = this.deletecontact.bind(this);
-        this.mycontact = this.mycontact.bind(this);
+        
+        this.applynow = this.applynow.bind(this);
         
         
     }
@@ -45,12 +46,6 @@ class Display extends React.Component {
         const { data } = await axios.get('http://localhost:3000/contacts');
         this.setState({ contacts: data, isLoading: false });
     }
-    async mycontact(){
-
-        const { history } = this.props;
-            history.push('/');
-        }
-    
 
     async deletecontact(contactsId) {
         await axios.delete(`http://localhost:3000/contacts/${contactsId}`);
@@ -61,6 +56,19 @@ class Display extends React.Component {
         history.push(`/page/?contactsId=${contactsId}`);
     }
 
+    applynow() {
+        
+            
+        const { history } = this.props;
+        history.push('/home');
+    }
+    deletecontact() {
+        
+            
+        const { history } = this.props;
+        history.push('/Display');
+    }
+    
     
 
     render() {
@@ -76,7 +84,12 @@ class Display extends React.Component {
             
    
     <div className={classes.root}>
-      <AppBar position="static"> <Typography variant="h4" >Delete Contact</Typography> <button type="button" onClick={this.mycontact}>Back</button></AppBar>
+      <AppBar position="static"> <Typography variant="h4" >Contact Numbers              
+                         <Button variant="contained"onClick={this.applynow} color="secondary">
+               Add new contact</Button><button type="button" onClick={this.deletecontact}>Delete Contact </button>
+               </Typography>              
+            
+               </AppBar>
                
      
                   <TableContainer component={Paper}> 
@@ -94,20 +107,7 @@ class Display extends React.Component {
                                     </TableCell>
                                     <TableCell align="left">{row.number}</TableCell>
                                     <TableCell align="left"> 
-                                        <button 
-                                            variant="contained"
-                                            onClick={() => this.deletecontact(row._id)}
-                                            color="secondary"
-                                        >
-                                            Deletecontact
-                                        </button>
-                                        <button 
-                                            variant="contained"
-                                            onClick={() => this.updatecontact(row._id)}
-                                            color="secondary"
-                                        >
-                                            Editcontact
-                                        </button>
+                                       
                                       
                                     </TableCell>
                                 </TableRow>
@@ -115,13 +115,13 @@ class Display extends React.Component {
                         </TableBody>
                     </Table>
                 </TableContainer> 
-               
-              
-            </div>
+                      
+          
+             </div>  
         );
     }
 }
 
-export default withRouter(withStyles(useStyles)(Display));
+export default withRouter(withStyles(useStyles)(main));
 
-       
+    

@@ -47,7 +47,7 @@ class home extends React.Component {
    async mycontact(){
 
     const { history } = this.props;
-        history.push('/Display');
+        history.push('/');
     }
 
   async addNew() {
@@ -68,7 +68,7 @@ class home extends React.Component {
                    
                  
                     <Typography variant="h6" >
-                    name
+                    Create A Contact  <button type="button" onClick={this.mycontact}>contact list</button>
                      </Typography>
                     
                   </Toolbar>
@@ -93,7 +93,7 @@ class home extends React.Component {
                      
                 
                 <button type="button" onClick={this.addNew}>save contact</button>
-                <button type="button" onClick={this.mycontact}>saved notes</button>
+               
              
             </div>
         );
