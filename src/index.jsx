@@ -2,10 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import main from './screens/main.jsx';
+
 import home from './screens/home';
 import Display from './screens/Display';
-import page from './screens/page';
+
 
 
 class Admissions extends React.Component {
@@ -18,10 +18,10 @@ class Admissions extends React.Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route path="/" exact component={main} />
-                    <Route path="/home" exact component={home} />
+                  
+                    <Route path="/" exact component={home} />
                     <Route path="/Display" component={Display} />
-                    <Route path="/page" component={page} />
+                   
                     
                 </Switch>
             </BrowserRouter>

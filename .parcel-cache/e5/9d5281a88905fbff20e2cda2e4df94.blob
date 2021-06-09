@@ -1,0 +1,199 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _axios = require('axios');
+  var _axiosDefault = _parcelHelpers.interopDefault(_axios);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactRouterDom = require('react-router-dom');
+  var _materialUiCoreStyles = require('@material-ui/core/styles');
+  require('@material-ui/core/Button');
+  var _materialUiCoreTable = require('@material-ui/core/Table');
+  var _materialUiCoreTableDefault = _parcelHelpers.interopDefault(_materialUiCoreTable);
+  var _materialUiCoreTableBody = require('@material-ui/core/TableBody');
+  var _materialUiCoreTableBodyDefault = _parcelHelpers.interopDefault(_materialUiCoreTableBody);
+  var _materialUiCoreTableCell = require('@material-ui/core/TableCell');
+  var _materialUiCoreTableCellDefault = _parcelHelpers.interopDefault(_materialUiCoreTableCell);
+  var _materialUiCoreTableContainer = require('@material-ui/core/TableContainer');
+  var _materialUiCoreTableContainerDefault = _parcelHelpers.interopDefault(_materialUiCoreTableContainer);
+  require('@material-ui/core/TableHead');
+  var _materialUiCoreTableRow = require('@material-ui/core/TableRow');
+  var _materialUiCoreTableRowDefault = _parcelHelpers.interopDefault(_materialUiCoreTableRow);
+  var _materialUiCorePaper = require('@material-ui/core/Paper');
+  var _materialUiCorePaperDefault = _parcelHelpers.interopDefault(_materialUiCorePaper);
+  var _materialUiCoreTypography = require('@material-ui/core/Typography');
+  var _materialUiCoreTypographyDefault = _parcelHelpers.interopDefault(_materialUiCoreTypography);
+  var _materialUiCoreAppBar = require('@material-ui/core/AppBar');
+  var _materialUiCoreAppBarDefault = _parcelHelpers.interopDefault(_materialUiCoreAppBar);
+  require('@material-ui/core/Grid');
+  var _jsxFileName = "D:\\my applications\\contacts\\src\\screens\\Display.jsx";
+  const useStyles = {
+    table: {
+      minWidth: 0
+    }
+  };
+  class Display extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        isLoading: true,
+        contacts: []
+      };
+      this.deletecontact = this.deletecontact.bind(this);
+    }
+    async componentDidMount() {
+      this.fetch();
+    }
+    async fetch() {
+      const {data} = await _axiosDefault.default.get('http://localhost:3000/contacts');
+      this.setState({
+        contacts: data,
+        isLoading: false
+      });
+    }
+    async deletecontact(contactsId) {
+      await _axiosDefault.default.delete(`http://localhost:3000/contacts/${contactsId}`);
+      await this.fetch();
+    }
+    updatcontact(contactsId) {
+      const {history} = this.props;
+      history.push(`/page/?contactsId=${contactsId}`);
+    }
+    render() {
+      const {classes} = this.props;
+      const {contacts, isLoading} = this.state;
+      if (isLoading === true) {
+        return (
+          /*#__PURE__*/_reactDefault.default.createElement("h1", {
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 64,
+              columnNumber: 20
+            }
+          }, "Loading...")
+        );
+      }
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          className: classes.root,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 71,
+            columnNumber: 5
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreAppBarDefault.default, {
+          position: "static",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 72,
+            columnNumber: 7
+          }
+        }, " ", /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTypographyDefault.default, {
+          variant: "h4",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 72,
+            columnNumber: 34
+          }
+        }, "saved notes list")), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTableContainerDefault.default, {
+          component: _materialUiCorePaperDefault.default,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 75,
+            columnNumber: 19
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTableDefault.default, {
+          className: classes,
+          "aria-label": "simple table",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 76,
+            columnNumber: 21
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTableRowDefault.default, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 78,
+            columnNumber: 29
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTableBodyDefault.default, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 82,
+            columnNumber: 25
+          }
+        }, contacts.map(row => /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTableRowDefault.default, {
+          key: row._id,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 84,
+            columnNumber: 33
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTableCellDefault.default, {
+          component: "th",
+          scope: "row",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 85,
+            columnNumber: 37
+          }
+        }, row.title), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTableCellDefault.default, {
+          align: "left",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 88,
+            columnNumber: 37
+          }
+        }, row.code), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTableCellDefault.default, {
+          align: "left",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 89,
+            columnNumber: 37
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("button", {
+          variant: "contained",
+          onClick: () => this.deletecontact(row._id),
+          color: "secondary",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 90,
+            columnNumber: 41
+          }
+        }, "Deletecontacts"), /*#__PURE__*/_reactDefault.default.createElement("button", {
+          variant: "contained",
+          onClick: () => this.updatecontact(row._id),
+          color: "secondary",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 97,
+            columnNumber: 41
+          }
+        }, "Editcontacts"))))))))
+      );
+    }
+  }
+  exports.default = _reactRouterDom.withRouter(_materialUiCoreStyles.withStyles(useStyles)(Display));
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

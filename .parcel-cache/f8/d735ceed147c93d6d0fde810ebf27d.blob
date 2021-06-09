@@ -1,0 +1,72 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _react = require('react');
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactDom = require('react-dom');
+  var _reactRouterDom = require('react-router-dom');
+  var _screensHome = require('./screens/home');
+  var _screensHomeDefault = _parcelHelpers.interopDefault(_screensHome);
+  var _screensDisplay = require('./screens/Display');
+  var _screensDisplayDefault = _parcelHelpers.interopDefault(_screensDisplay);
+  var _jsxFileName = "D:\\my applications\\contacts\\src\\index.jsx";
+  class Admissions extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {};
+    }
+    render() {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 19,
+            columnNumber: 13
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Switch, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 20,
+            columnNumber: 17
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
+          path: "/",
+          exact: true,
+          component: _screensHomeDefault.default,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 22,
+            columnNumber: 21
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
+          path: "/Display",
+          component: _screensDisplayDefault.default,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 23,
+            columnNumber: 21
+          }
+        })))
+      );
+    }
+  }
+  _reactDom.render(/*#__PURE__*/_reactDefault.default.createElement(Admissions, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 8
+    }
+  }), document.getElementById('root'));
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

@@ -1,0 +1,142 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactRouterDom = require('react-router-dom');
+  var _axios = require('axios');
+  var _axiosDefault = _parcelHelpers.interopDefault(_axios);
+  var _querystring = require('querystring');
+  var _querystringDefault = _parcelHelpers.interopDefault(_querystring);
+  require('@material-ui/core/Button');
+  require('@material-ui/core/MenuItem');
+  var _materialUiCoreTypography = require('@material-ui/core/Typography');
+  var _materialUiCoreTypographyDefault = _parcelHelpers.interopDefault(_materialUiCoreTypography);
+  var _materialUiCoreAppBar = require('@material-ui/core/AppBar');
+  var _materialUiCoreAppBarDefault = _parcelHelpers.interopDefault(_materialUiCoreAppBar);
+  var _materialUiCoreToolbar = require('@material-ui/core/Toolbar');
+  var _materialUiCoreToolbarDefault = _parcelHelpers.interopDefault(_materialUiCoreToolbar);
+  var _jsxFileName = "D:\\my applications\\contacts\\src\\screens\\home.jsx";
+  class home extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        name: '',
+        number: ''
+      };
+      this.addNew = this.addNew.bind(this);
+      this.mycontact = this.mycontact.bind(this);
+    }
+    async componentDidMount() {
+      const {location} = this.props;
+      const {search} = location;
+      const queryParams = _querystringDefault.default.parse(search.slice(1));
+      if (queryParams.admissionsId) ;
+      {
+        const {data} = await _axiosDefault.default.get(`http://localhost:3000/contacts/${queryParams.contactId}`);
+        this.setState({
+          contactId: queryParams.contactId,
+          name: data.value.note,
+          number: data.value.number
+        });
+      }
+    }
+    async mycontact() {
+      const {history} = this.props;
+      history.push('/Display');
+    }
+    async addNew() {
+      const {name, number} = this.state;
+      await _axiosDefault.default.post('http://localhost:3000/contacts', {
+        name,
+        number
+      });
+    }
+    render() {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 64,
+            columnNumber: 13
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreAppBarDefault.default, {
+          position: "static",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 65,
+            columnNumber: 18
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreToolbarDefault.default, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 66,
+            columnNumber: 21
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTypographyDefault.default, {
+          variant: "h6",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 70,
+            columnNumber: 21
+          }
+        }, "name"))), /*#__PURE__*/_reactDefault.default.createElement("input", {
+          type: "text",
+          placeholder: " name",
+          onChange: event => this.setState(prev => ({
+            name: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 77,
+            columnNumber: 18
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("input", {
+          type: "text",
+          placeholder: " number",
+          onChange: event => this.setState(prev => ({
+            number: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 85,
+            columnNumber: 17
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("button", {
+          type: "button",
+          onClick: this.addNew,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 95,
+            columnNumber: 17
+          }
+        }, "save contact"), /*#__PURE__*/_reactDefault.default.createElement("button", {
+          type: "button",
+          onClick: this.mycontact,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 96,
+            columnNumber: 17
+          }
+        }, "saved notes"))
+      );
+    }
+  }
+  exports.default = _reactRouterDom.withRouter(home);
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

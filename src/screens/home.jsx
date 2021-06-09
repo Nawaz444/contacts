@@ -19,12 +19,12 @@ class home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            contact: '',
-            title:'',
+            name: '',
+            number:'',
           
         };
         this.addNew = this.addNew.bind(this);
-        this.mynotes = this.mynotes.bind(this);
+        this.mycontact = this.mycontact.bind(this);
      
         
     }
@@ -34,17 +34,17 @@ class home extends React.Component {
         const { search } = location;
         const queryParams = qs.parse(search.slice(1));
         if (queryParams.admissionsId); {
-            const { data } = await axios.get(`http://localhost:4000/contact/${queryParams.contactId}`);
+            const { data } = await axios.get(`http://localhost:3000/contacts/${queryParams.contactId}`);
             this.setState({
                 contactId: queryParams.contactId,
-                note: data.value.note,
-                title:data.value.title,
+                name: data.value.name,
+                number:data.value.number,
                
             });
         }
     }
    
-   async mynotes(){
+   async mycontact(){
 
     const { history } = this.props;
         history.push('/Display');
@@ -52,8 +52,8 @@ class home extends React.Component {
 
   async addNew() {
     
-    const {note,title} = this.state;
-    await axios.post('http://localhost:4000/contact', { note,title });
+    const {name,number} = this.state;
+    await axios.post('http://localhost:3000/contacts', { name,number });
     
 };
 
@@ -68,7 +68,7 @@ class home extends React.Component {
                    
                  
                     <Typography variant="h6" >
-                    contact
+                    name
                      </Typography>
                     
                   </Toolbar>
@@ -76,24 +76,24 @@ class home extends React.Component {
            
                  <input
                     type="text"
-                    placeholder=" Title"
+                    placeholder=" name"
                     onChange={(event) => this.setState((prev) => ({
                         
-                        title: event.target.value,
+                        name: event.target.value,
                     }))}
                 />
-                      <textarea
-                    placeholder="note"
-                    rows="30"
-                    cols="100"
+                <input
+                    type="text"
+                    placeholder=" number"
                     onChange={(event) => this.setState((prev) => ({
-                        note: event.target.value,
                         
+                        number: event.target.value,
                     }))}
                 />
+                     
                 
-                <button type="button" onClick={this.addNew}>save note</button>
-                <button type="button" onClick={this.mynotes}>saved notes</button>
+                <button type="button" onClick={this.addNew}>save contact</button>
+                <button type="button" onClick={this.mycontact}>saved notes</button>
              
             </div>
         );
